@@ -12,23 +12,20 @@
       .outer {
         height: 250px;
         width: 250px;
-        /* height: 40vh;
-        width: 40vw; */
-        background-color: cornflowerblue;
-        /* display: flex; */
         float: left;
-        /* justify-content: center;
-        align-items: center; */
-        /* margin: 1px; */
+        margin: 1px;
         box-sizing: border-box;
+        /* background-image: url('https://www.fillmurray.com/200/300');
+        background-size: cover; */
       }
 
       .tile {
-        height: 48%;
-        width: 48%;
-        background-color: grey;
+        height: 45%;
+        width: 45%;
         float: left;
-        margin: .6%;
+        margin: 2%;
+        /* background-image: url('https://www.fillmurray.com/200/300');
+        background-size: cover; */
         /* margin: 0 auto; */
       }
 
@@ -39,49 +36,49 @@
       .blue {
         background-color: cornflowerblue;
       }
+
+      .no-click {
+        /* pointer-events: none; */
+      }
     </style>
   </head>
   <body>
     <!-- dynamic div -->
-    <div class="outer">
-    </div>
-
-    <!-- test div -->
-    <div class="outer">
-      <div class="tile">
-        <div class="tile grey">
-          <div class="tile blue"></div>
-          <div class="tile blue"></div>
-          <div class="tile blue"></div>
-          <div class="tile blue"></div>
-        </div>
-        <div class="tile grey"></div>
-        <div class="tile grey"></div>
-        <div class="tile grey"></div>
-      </div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
+    <div class="outer blue">
     </div>
 
     <script>
-      $('div').on('click', handleClick);
+      var count = 0;
+
+      //initialize divs with handler
+      assignAllHandler();
+
+      function assignAllHandler() {
+        $('div').on('click', handleClick);
+        return count++;
+      };
 
       function handleClick(event) {
+        // console.log("From handleClick", count, $(this))
         //this is the element that was clicked
         event.stopPropagation();
 
-        if ($(this).hasClass('grey')){
-          console.log("CLICKED ON GREY")
-          // for (var i=0; i<4; i++){
-          //   $(this).prepend("<div class='tile blue'></div>");
-          // }
+        if ($(this).hasClass('blue')){
+          for (var i=0; i<4; i++){
+            $(this).prepend("<div class='tile grey'></div>");
+          }
+        } else if ($(this).hasClass('grey')){
+          for (var i=0; i<4; i++){
+            $(this).prepend("<div class='tile blue'></div>");
+          }
         }
 
+        return $(this).on('click', '> *', handleClick)
       }
 
       //TODO:
-      // CLick on a square and it will divide into four new squares
+      // CLick on a square and it will divide into four new squares [x]
+      // why does clicking on sibling squares elicit weird behavior? [x]
     </script>
   </body>
 </html>
