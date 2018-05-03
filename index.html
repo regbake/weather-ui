@@ -10,24 +10,48 @@
     </script>
     <style>
       .outer {
-        height: 50vh;
-        width: 50vw;
+        height: 250px;
+        width: 250px;
         background-color: cornflowerblue;
-        display: flex;
+        /* display: flex; */
+        float: left;
+        /* justify-content: center;
+        align-items: center; */
+        /* margin: 1px; */
+        box-sizing: border-box;
       }
 
       .tile {
-        height: 99%;
-        width: 99%;
+        height: 48%;
+        width: 48%;
         background-color: grey;
-        margin: 0 auto;
+        float: left;
+        margin: 1%;
+        /* margin: 0 auto; */
+      }
+
+      .green {
+        background-color: green;
       }
     </style>
   </head>
   <body>
+    <div class="outer"></div>
     <div class="outer">
       <div class="tile">
+        <div class="tile green">
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+        </div>
+        <div class="tile green"></div>
+        <div class="tile green"></div>
+        <div class="tile green"></div>
       </div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
     </div>
 
     <script>
@@ -42,8 +66,10 @@
       function handleClick() {
         clickCount++;
 
-        $('.tile').width(tileWidth--);
-        $('.tile').height(tileHeight--);
+        // $('.tile').width(tileWidth*.98);
+        // $('.tile').height(tileHeight*.98);
+
+        console.log("w/h", tileWidth, tileHeight)
 
       }
     </script>
