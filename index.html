@@ -12,6 +12,8 @@
       .outer {
         height: 250px;
         width: 250px;
+        /* height: 40vh;
+        width: 40vw; */
         background-color: cornflowerblue;
         /* display: flex; */
         float: left;
@@ -26,24 +28,32 @@
         width: 48%;
         background-color: grey;
         float: left;
-        margin: 1%;
+        margin: .6%;
         /* margin: 0 auto; */
       }
 
       .green {
         background-color: green;
       }
+
+      .blue {
+        background-color: blue;
+      }
     </style>
   </head>
   <body>
-    <div class="outer"></div>
+    <!-- dynamic div -->
+    <div class="outer">
+    </div>
+
+    <!-- test div -->
     <div class="outer">
       <div class="tile">
         <div class="tile green">
-          <div class="tile"></div>
-          <div class="tile"></div>
-          <div class="tile"></div>
-          <div class="tile"></div>
+          <div class="tile blue"></div>
+          <div class="tile blue"></div>
+          <div class="tile blue"></div>
+          <div class="tile blue"></div>
         </div>
         <div class="tile green"></div>
         <div class="tile green"></div>
@@ -61,17 +71,73 @@
       var tileWidth = $('.tile').width();
       var tileHeight = $('.tile').height();
 
-      outer.addEventListener('click', handleClick);
+      $('div').on('click', handleClick);
 
-      function handleClick() {
-        clickCount++;
+      function handleClick(event) {
+        //this is the element that was clicked
+        event.stopPropagation();
 
-        // $('.tile').width(tileWidth*.98);
-        // $('.tile').height(tileHeight*.98);
+        $(this).prepend("<div class='tile blue'></div>");
 
-        console.log("w/h", tileWidth, tileHeight)
-
+        console.log('clicked', $(this));
       }
+
+      //TODO:
+      // CLick on a square and it will divide into four new squares
     </script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ha -->
