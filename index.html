@@ -32,12 +32,12 @@
         /* margin: 0 auto; */
       }
 
-      .green {
-        background-color: green;
+      .grey {
+        background-color: grey;
       }
 
       .blue {
-        background-color: blue;
+        background-color: cornflowerblue;
       }
     </style>
   </head>
@@ -49,15 +49,15 @@
     <!-- test div -->
     <div class="outer">
       <div class="tile">
-        <div class="tile green">
+        <div class="tile grey">
           <div class="tile blue"></div>
           <div class="tile blue"></div>
           <div class="tile blue"></div>
           <div class="tile blue"></div>
         </div>
-        <div class="tile green"></div>
-        <div class="tile green"></div>
-        <div class="tile green"></div>
+        <div class="tile grey"></div>
+        <div class="tile grey"></div>
+        <div class="tile grey"></div>
       </div>
       <div class="tile"></div>
       <div class="tile"></div>
@@ -65,21 +65,19 @@
     </div>
 
     <script>
-      var clickCount = 0;
-      var outer = document.getElementsByClassName('outer')[0];
-      var tile = document.getElementsByClassName('tile')[0];
-      var tileWidth = $('.tile').width();
-      var tileHeight = $('.tile').height();
-
       $('div').on('click', handleClick);
 
       function handleClick(event) {
         //this is the element that was clicked
         event.stopPropagation();
 
-        $(this).prepend("<div class='tile blue'></div>");
+        if ($(this).hasClass('grey')){
+          console.log("CLICKED ON GREY")
+          // for (var i=0; i<4; i++){
+          //   $(this).prepend("<div class='tile blue'></div>");
+          // }
+        }
 
-        console.log('clicked', $(this));
       }
 
       //TODO:
