@@ -1,0 +1,51 @@
+<!doctype HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">
+    </script>
+    <style>
+      .outer {
+        height: 50vh;
+        width: 50vw;
+        background-color: cornflowerblue;
+        display: flex;
+      }
+
+      .tile {
+        height: 99%;
+        width: 99%;
+        background-color: grey;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="tile">
+      </div>
+    </div>
+
+    <script>
+      var clickCount = 0;
+      var outer = document.getElementsByClassName('outer')[0];
+      var tile = document.getElementsByClassName('tile')[0];
+      var tileWidth = $('.tile').width();
+      var tileHeight = $('.tile').height();
+
+      outer.addEventListener('click', handleClick);
+
+      function handleClick() {
+        clickCount++;
+
+        $('.tile').width(tileWidth--);
+        $('.tile').height(tileHeight--);
+
+      }
+    </script>
+  </body>
+</html>
